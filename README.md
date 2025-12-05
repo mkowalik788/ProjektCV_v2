@@ -7,7 +7,7 @@ Baza danych stworzona do mojego portfolio w CV, pokazująca moją dotychczas zdo
 
 Repozytorium zawiera pliki osobno - dla lepszej czytelności - dla każdej sekcji - triggery, procedury, widoki, tabele. W plikach opisano za co dany trigger/procedura odpowiada. 
 
-##Lista funkcjonalności w bazie to:
+## Lista funkcjonalności w bazie to:
 - Automatyczne generowanie prostych faktur poprzez triggery,
 - dodawanie opłacania faktur sprzedażowych i kosztowych poprzez procedury, zmienianie statusów faktur na "opłacone" lub "częściowo opłacone",
 - wystawianie faktur sprzedażowej do danego zamówienia (procedura),
