@@ -26,6 +26,51 @@ Repozytorium zawiera pliki osobno - dla lepszej czytelności - dla każdej sekcj
 
 ---
 
+## 📁 Struktura plików
+
+### [**tabele.sql**](https://github.com/mkowalik788/ProjektCV_v2/blob/main/tabele.sql)
+Definicje wszystkich tabel w systemie wraz z relacjami i ograniczeniami.
+- ✅ **Tabele główne**: Employees, Customers, Products, Orders, Production
+- ✅ **Tabele pomocnicze**: Materials, Suppliers, Invoices, Payments
+- ✅ **Tabele magazynowe**: InventoryTransactions, MaterialOrders
+- ✅ **Relacje**: Klucze obce i ograniczenia integralności
+
+### [**triggery.sql**](https://github.com/mkowalik788/ProjektCV_v2/blob/main/triggery.sql)
+Automatyczne mechanizmy zarządzające danymi.
+- ✅ **Finanse**: Aktualizacja sald pracowników
+- ✅ **Magazyn**: Kontrola stanów materiałów
+- ✅ **Produkcja**: Walidacja ilości i statusów
+- ✅ **Zamówienia**: Automatyczne obliczanie wartości
+
+### [**procedury.sql**](https://github.com/mkowalik788/ProjektCV_v2/blob/main/procedury.sql)
+Procedury składowane do operacji biznesowych.
+- ✅ **Finanse**: Wypłaty, fakturowanie, płatności
+- ✅ **Magazyn**: Dostawy, zamówienia materiałów
+- ✅ **Zamówienia**: Tworzenie nowych zamówień
+- ✅ **Raporty**: Raporty produkcyjne, sprzedażowe, finansowe
+
+### [**widoki.sql**](https://github.com/mkowalik788/ProjektCV_v2/blob/main/widoki.sql)
+Widoki do szybkiego dostępu do danych.
+- ✅ **Dashboard**: Aktualne zamówienia, produkcja w toku
+- ✅ **Raporty**: Stan magazynu, faktury do zapłaty
+- ✅ **Analiza**: Najlepiej sprzedające się produkty
+- ✅ **Monitorowanie**: Aktywni pracownicy, dzisiejsze aktywności
+
+### [**funkcje.sql**](https://github.com/mkowalik788/ProjektCV_v2/blob/main/funkcje.sql)
+Funkcje użytkowe dla systemu.
+- ✅ **Kalkulacyjne**: Obliczanie wartości zamówień
+- ✅ **Walidacyjne**: Sprawdzanie dostępności materiałów
+- ✅ **Statusy**: Sprawdzanie gotowości zamówień
+
+- ---
+
+## 🛠️ Technologie
+
+![MS SQL Server](https://img.shields.io/badge/MS_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+![T-SQL](https://img.shields.io/badge/T--SQL-004880?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+
+---
+
 ## ✨ Funkcjonalności systemu
 
 ### 📄 **Fakturowanie**
@@ -63,10 +108,4 @@ Repozytorium zawiera pliki osobno - dla lepszej czytelności - dla każdej sekcj
 - ✅ Wyliczanie pozostałej produkcji
 - ✅ Aktualizacja stanów magazynowych
 
----
-
-## 🛠️ Technologie
-
-![MS SQL Server](https://img.shields.io/badge/MS_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
-![T-SQL](https://img.shields.io/badge/T--SQL-004880?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
 
