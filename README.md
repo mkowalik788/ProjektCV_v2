@@ -1,31 +1,72 @@
-# Projekt CV MS SQL
-Projekt bazy danych MS SQL dla małej firmy zajmującej się produkcją obuwia, zatrudniającą cholewkarzy, szewców, krojczych, handlowców i pomocników (do pakowania, przygotowanie wstępne do produkcji). Zawiera logiki dodawania faktur, zamówień półproduktów, zamówień gotowych produktów firmy itp. 
+# Projekt Bazy Danych MS SQL - Produkcja Obuwia
 
-Projekt jest ciągle rozwijany. Zawiera kompletną bazę danych, która powinna wystarczyć do obsługi programu wykorzystanego w ów firmie. Zawiera logikę samego fakturowania (dodawanie faktur do zamówień, generowanie ich jako rekordy w odpowiednich tabelach), zamówień półproduktów, zamówień samych produktów, naliczanie wypłat pracownikom, wypłacanie pracownikom B2B wraz z tworzeniem faktur. Same pola faktur są zrobione do niezbędnego śledzenia stanu konta firmowego, co pozwoli na generowanie raportów finansowych.
+**System zarządzania dla firmy produkującej obuwie**
 
-Baza danych stworzona do mojego portfolio w CV, pokazująca moją dotychczas zdobytą wiedzę z zakresu T-SQL. Jest to wersja ulepszona względem poprzedniej - teraz jest możliwe rozwijanie bazy o większa ilość pracowników i ich role, jest przejrzystsza i zawiera wiele więcej funkcji i możliwości rozwoju.
+---
 
-Repozytorium zawiera pliki osobno - dla lepszej czytelności - dla każdej sekcji - triggery, procedury, widoki, tabele. W plikach opisano za co dany trigger/procedura odpowiada. 
+## 📋 Opis projektu
 
-## Lista funkcjonalności w bazie to:
-- Automatyczne generowanie prostych faktur poprzez triggery,
-- dodawanie opłacania faktur sprzedażowych i kosztowych poprzez procedury, zmienianie statusów faktur na "opłacone" lub "częściowo opłacone",
-- wystawianie faktur sprzedażowej do danego zamówienia (procedura),
-- wypłaty dla pracowników B2B poprzez procedurę, z automatycznym wystawianiem faktury przy wypłacie,
-- zapis wszystkich ruchów magazynowych, np. poprzez wydanie materiałów do produkcji (trigger), lub dodawanie dostawy materiałów (procedura) z generowaniem faktur kosztowych w przypadku wpisania wartości w odpowiednie pole, lub też przy aktualizacji produkcji o ilość wydawanego towaru,
-- alert (trigger) w przypadku przydzielenia produkcji ze zbyt małym stanem magazynowym półproduktów,
-- zabezpieczenia przed niepoprawnymi danymi w procedurach i triggerach,
-- automatyczne zmiany statusów zamówień przy zleceniu produkcji (triggery),
-- automatyczne naliczanie wartości sprzedaży na podstawie zamówionych towarów (trigger),
-- konta pracowników i klientów(loginy, hasła) do możliwej rozbudowy systemu o działający interfejs użytkownika w przyszłości,
-- automatyczne wyliczanie ile towaru zostało do wyprodukowania z danego zamówienia (trigger),
-- automatyczne naliczanie wynagrodzenia pracowników (B2B) na podstawie ich roli i ilości wyprodukowanego towaru (trigger),
-- automatyczne pobieranie półproduktów z magazynu po wydaniu zamówiania do produkcji, aktualizacja pobranego stanu w przypadku zmiany ilości przypisanej produkcji, czy zwrot materiałów w przypadku zmiany statusu na 'Anulowane' (triggery),
-- blokowanie usuwania produkcji, zamiast tego automatyczna zmiana statusu na anulowane i ustawienie pracownikom poprawnego stanu konta,
-- blokowanie wydania produkcji jeśli nie ma wystarczającej ilości materiałów w magazynie (trigger),
-- blokowanie wydania zamówienia do produkcji większej ilości niż jest w zamówieniu,
-- zapisywanie wszystkich ruchów, faktur w Payments, dzięki czemu możemy kontrolować stan konta firmy,
-- tabele z kontami bankowymi do łatwiejszego rozliczania płatności w przyszłości, jak i z rolami i etapami produkcji (możliwość rozbudowy systemu w przyszłości, lecz wymaga to interfejsu użytkownika),
-- śledzenie historii zmian cenów materiałów,
-- dodawanie zamówień do dostawców wraz z ilościami materiałów i cenami (procedura), automatyczne naliczanie wartości zamówienia (trigger).
-- raporty produkcji, sprzedaży, zamówień, finansowy.
+Projekt bazy danych MS SQL dla małej firmy zajmującej się produkcją obuwia, zatrudniającej cholewkarzy, szewców, krojczych, handlowców i pomocników (do pakowania, przygotowania wstępnego do produkcji). Zawiera logiki dodawania faktur, zamówień półproduktów, zamówień gotowych produktów firmy itp.
+
+Logika fakturowania prezentuje mechanizmy automatycznego generowania dokumentów finansowych w bazie danych, ilustrując możliwości systemu w zarządzaniu przepływem finansowym firmy. Jest to sam zarys, pokazana logika, jednakże wpisywanie tutaj faktur wystawionych w zewnętrznych programach pozwoliłoby w bazie śledzić finanse firmy.
+
+> **Projekt jest ciągle rozwijany.** Zawiera kompletną bazę danych, która powinna wystarczyć do obsługi programu wykorzystanego w ów firmie. Zawiera logikę samego fakturowania, zamówień półproduktów, zamówień samych produktów, naliczanie wypłat pracownikom, wypłacanie pracownikom B2B wraz z tworzeniem faktur.
+
+Baza danych stworzona do mojego portfolio w CV, pokazująca moją dotychczas zdobytą wiedzę z zakresu T-SQL. Jest to wersja ulepszona względem poprzedniej - teraz jest możliwe rozwijanie bazy o większą ilość pracowników i ich role, jest przejrzystsza i zawiera wiele więcej funkcji i możliwości rozwoju.
+
+Repozytorium zawiera pliki osobno - dla lepszej czytelności - dla każdej sekcji: triggery, procedury, widoki, tabele. W plikach opisano za co dany trigger/procedura odpowiada.
+
+---
+
+## 🔗 Diagram relacji tabel
+
+[![Diagram bazy danych](https://img.shields.io/badge/🗺️_Zobacz_diagram_relacji_tabel-CLICK_HERE-blue?style=for-the-badge&logo=diagrams.net)](https://dbdiagram.io/d/693284b23c4ea889c6a9b6cc)
+
+*Zależności tabel są jako link do strony dbdiagrams.io, gdyż ich liczba uniemożliwiłaby swobodne odczytanie ich w formie graficznej.*
+
+---
+
+## ✨ Funkcjonalności systemu
+
+### 📄 **Fakturowanie**
+- ✅ Automatyczne generowanie faktur
+- ✅ Opłacanie faktur z aktualizacją statusów
+- ✅ Faktury sprzedażowe i kosztowe
+- ✅ Wystawianie faktur dla B2B
+
+### 🏭 **Produkcja**
+- ✅ Zarządzanie etapami produkcji
+- ✅ Automatyczne naliczanie wynagrodzeń
+- ✅ Kontrola stanów magazynowych
+- ✅ Śledzenie postępu produkcji
+
+### 📦 **Magazyn**
+- ✅ Automatyczne pobieranie półproduktów
+- ✅ Kontrola stanów materiałów
+- ✅ Alerty przy braku materiałów
+- ✅ Zamówienia do dostawców
+
+### 🔒 **Zabezpieczenia**
+- ✅ Walidacja danych wejściowych
+- ✅ Blokowanie niepoprawnych operacji
+- ✅ Historia wszystkich transakcji
+
+### 📊 **Raporty**
+- ✅ Raporty produkcyjne
+- ✅ Raporty sprzedażowe
+- ✅ Raporty finansowe
+- ✅ Analiza stanu konta firmy
+
+### ⚙️ **Automatyzacja**
+- ✅ Automatyczne zmiany statusów
+- ✅ Naliczanie wartości sprzedaży
+- ✅ Wyliczanie pozostałej produkcji
+- ✅ Aktualizacja stanów magazynowych
+
+---
+
+## 🛠️ Technologie
+
+![MS SQL Server](https://img.shields.io/badge/MS_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+![T-SQL](https://img.shields.io/badge/T--SQL-004880?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+
